@@ -1,0 +1,56 @@
+{
+  "summary": "Decisions: They both are agreed to guide us\nduring the hackathon and workshop.; We will need sponsor for any additional amount. Actions: We will need sponsor for any additional amount.; The workshop will\nneed another 5,000 for materials and certificates.; If you give them\nbranding space and a short slot I will send them the event...",
+  "key_topics": [
+    "everyone",
+    "can",
+    "meeting",
+    "event",
+    "yes",
+    "technova"
+  ],
+  "decisions": [
+    "They both are agreed to guide us\nduring the hackathon and workshop.",
+    "We will need sponsor for any additional amount.",
+    "Also we'll need a banner for the college gate and few standees for the auditorium.",
+    "Agreed.",
+    "Before we wrap up our next meeting, we'll be on Friday 4pm in the seminar room to review\nprogress."
+  ],
+  "actions": [
+    {
+      "raw": "We will need sponsor for any additional amount.",
+      "task": "We will need sponsor for any additional amount.",
+      "person": null,
+      "due": null
+    },
+    {
+      "raw": "The workshop will\nneed another 5,000 for materials and certificates.",
+      "task": "The workshop will\nneed another 5,000 for materials and certificates.",
+      "person": null,
+      "due": null
+    },
+    {
+      "raw": "If you give them\nbranding space and a short slot I will send them the event proposal by tomorrow.",
+      "task": "If you give them\nbranding space and a short slot I will send them the event proposal by tomorrow.",
+      "person": null,
+      "due": "tomorrow."
+    },
+    {
+      "raw": "Also Nikita, I will share the event schedule once it's ready.",
+      "task": "Also Nikita, I will share the event schedule once it's ready.",
+      "person": null,
+      "due": null
+    },
+    {
+      "raw": "I will also start preparing the budget sheet with event wise expenses\nand expected income from us.",
+      "task": "I will also start preparing the budget sheet with event wise expenses\nand expected income from us.",
+      "person": null,
+      "due": null
+    },
+    {
+      "raw": "And I will finalize the event rules and judges list by this weekend.",
+      "task": "And I will finalize the event rules and judges list by this weekend.",
+      "person": null,
+      "due": "this weekend."
+    }
+  ]
+}

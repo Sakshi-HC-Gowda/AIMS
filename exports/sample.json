@@ -1,0 +1,29 @@
+{
+  "summary": "Decisions: We decided to extend the project deadline to Nov 15, 2025.; Agreed. We will meet next Monday Actions: I will update the project timeline and send the new Gantt chart by 10/11/2025.; I'll take the presentation slides and finish them before Nov 20.",
+  "key_topics": [
+    "project",
+    "nov",
+    "nayana",
+    "decided",
+    "extend",
+    "deadline"
+  ],
+  "decisions": [
+    "We decided to extend the project deadline to Nov 15, 2025.",
+    "Agreed. We will meet next Monday"
+  ],
+  "actions": [
+    {
+      "raw": "I will update the project timeline and send the new Gantt chart by 10/11/2025.",
+      "task": "I will update the project timeline and send the new Gantt chart by 10/11/2025.",
+      "person": null,
+      "due": "10/11/2025"
+    },
+    {
+      "raw": "I'll take the presentation slides and finish them before Nov 20.",
+      "task": "I'll take the presentation slides and finish them before Nov 20.",
+      "person": null,
+      "due": "Nov 20"
+    }
+  ]
+}

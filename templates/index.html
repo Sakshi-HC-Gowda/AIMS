@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AIMS - AI Meeting Summarizer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+  <div class="max-w-3xl mx-auto p-6">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">🤖 AIMS – AI Meeting Summarizer</h1>
+      <a href="/history" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition">🕘 View History</a>
+    </div>
+    <div class="mt-4">
+  <a href="{{ url_for('home') }}" class="text-blue-600 hover:underline">← Back to Home</a>
+</div>
+
+
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <form method="post" action="/process" enctype="multipart/form-data" class="space-y-4">
+        <label class="block text-gray-700 font-medium">Enter or Upload Transcript:</label>
+        
+        <textarea name="text_input" rows="6" placeholder="Type or paste your transcript here..."
+          class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500"></textarea>
+
+        <div class="text-center text-gray-500">— OR —</div>
+
+        <input type="file" name="file" accept=".txt,.pdf"
+               class="block w-full border border-gray-300 rounded-md p-2 bg-gray-50 hover:bg-gray-100 cursor-pointer">
+        
+        <div class="text-center">
+          <button type="submit" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">🚀 Summarize</button>
+        </div>
+      </form>
+    </div>
+
+    {% if error %}
+      <div class="bg-red-100 text-red-700 p-4 rounded mb-6">⚠️ {{ error }}</div>
+    {% endif %}
+
+    {% if results %}
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-2">📝 Summary</h2>
+        <p class="text-gray-700 leading-relaxed">{{ results.summary }}</p>
+
+        <h3 class="mt-4 font-semibold">🏷️ Key Topics</h3>
+        <div class="flex flex-wrap gap-2 mt-2">
+          {% for topic in results.key_topics %}
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">{{ topic }}</span>
+          {% endfor %}
+        </div>
+
+        <h3 class="mt-4 font-semibold">✅ Decisions</h3>
+        <ul class="list-disc list-inside text-gray-700 mt-2">
+          {% for d in results.decisions %}
+            <li>{{ d }}</li>
+          {% endfor %}
+        </ul>
+
+        <h3 class="mt-4 font-semibold">📋 Action Items</h3>
+        <div class="mt-2 space-y-2">
+          {% for a in results.actions %}
+            <div class="p-3 border border-gray-200 rounded bg-gray-50">
+              <b>Task{{ loop.index }}:</b> {{ a.task }} <br>
+              <b>Person:</b> {{ a.person or '—' }} &nbsp;&nbsp;
+              <b>Due:</b> {{ a.due or '—' }}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="flex justify-center gap-4 mt-6">
+          <form method="post" action="/export/docx">
+            <input type="hidden" name="payload" value='{{ results | tojson }}'/>
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">⬇️ Export DOCX</button>
+          </form>
+          <form method="post" action="/export/pdf">
+            <input type="hidden" name="payload" value='{{ results | tojson }}'/>
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">⬇️ Export PDF</button>
+          </form>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

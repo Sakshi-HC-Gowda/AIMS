@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>History - AIMS Summarizer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans p-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">🕘 Summary History</h1>
+      <a href="/" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">⬅️ Back to Summarizer</a>
+    </div>
+
+    {% if history %}
+    {% for item in history %}
+      <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h3 class="font-semibold text-lg mb-2">
+          {{ item.filename }} 
+          <span class="text-gray-500 text-sm">({{ item.timestamp }})</span>
+        </h3>
+        <p class="mb-2"><b>Summary:</b> {{ item.summary }}</p>
+        
+        {% if item.key_topics %}
+          <p class="mb-2"><b>Key Topics:</b> {{ item.key_topics | join(", ") }}</p>
+        {% endif %}
+        
+        {% if item.decisions %}
+          <p class="mb-2"><b>Decisions:</b></p>
+          <ul class="list-disc pl-6">
+            {% for d in item.decisions %}
+              <li>{{ d }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        
+        {% if item.actions %}
+          <p class="mt-2 mb-1"><b>Action Items:</b></p>
+          <ul class="list-decimal pl-6">
+            {% for a in item.actions %}
+              <li>
+                {{ a.task }} 
+                {% if a.person %} — <i>{{ a.person }}</i>{% endif %}
+                {% if a.due %} (Due: {{ a.due }}){% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="text-gray-500 italic">No summaries yet — generate one to see it here.</p>
+  {% endif %}
+</div>
+</body>
+</html>
